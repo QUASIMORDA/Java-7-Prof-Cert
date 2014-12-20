@@ -19,7 +19,7 @@ public class RawTypeTest {
 			
 		}
 		
-		// Runtime Exception
+		// Runtime ClassCastException
 		for(Iterator<String> iter = list1.iterator(); iter.hasNext();){
 			System.out.println(iter.next());
 		}
@@ -30,6 +30,20 @@ public class RawTypeTest {
 		
 		List<String> strList2 = list2;
 		//strList2.add(new Integer(3));
+		
+		List list3 = new LinkedList();
+		list3.add("Eins");
+		list3.add("Zwei");
+		list3.add(new Integer(3));
+		
+		List<String> strList3 = new LinkedList<>();
+		strList3 = list3;
+		
+		// ClassCastException
+		for(Iterator<String> iter = list3.iterator(); iter.hasNext();){
+			String str = iter.next();
+			System.out.println(str);
+		}
 	}
 
 }
